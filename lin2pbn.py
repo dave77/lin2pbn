@@ -22,6 +22,10 @@ def linStringToPBNString(linstring):
             for j in range(13):
                 if all([rank[j] not in hands[k][i] for k in range(3)]):
                     hands[3][i] = hands[3][i] + rank[j]
+    
+    # hands always starts from S now, so need rotate
+    for _ in range(dealerIndex -1):
+        hands.append(hands.pop(0))
     deal = dealer + ":" + " ".join([".".join(x) for x in hands])
 
     # Extract auction
